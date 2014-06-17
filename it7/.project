@@ -3,6 +3,7 @@
 	<name>it7</name>
 	<comment></comment>
 	<projects>
+		<project>android-support-v7-appcompat1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

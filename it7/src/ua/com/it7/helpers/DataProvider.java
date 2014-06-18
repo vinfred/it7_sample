@@ -1,6 +1,5 @@
 package ua.com.it7.helpers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -11,13 +10,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import ua.com.it7.model.Person;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DataProvider extends DefaultHttpClient {
@@ -25,9 +21,9 @@ public class DataProvider extends DefaultHttpClient {
 	
 	public DataProvider() {
 		super();
-		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Person> boo() {
 		ObjectMapper mapper = new ObjectMapper();
 		String s = null;
@@ -52,7 +48,7 @@ public class DataProvider extends DefaultHttpClient {
 			JSONObject people = new JSONObject(s);
 			Iterator<String> keys = people.keys();
 			ArrayList<Person> morePeople = new ArrayList<Person>();
-			JSONObject p;
+			JSONObject p = null;
 			while (keys.hasNext()) {
 				p = people.getJSONObject(keys.next());
 				morePeople.add(mapper.readValue(p.toString(), Person.class));
@@ -60,30 +56,9 @@ public class DataProvider extends DefaultHttpClient {
 			return morePeople;
 			
 		}
-		catch (JsonGenerationException e) {
-			
-			e.printStackTrace();
-			
-		}
-		catch (JsonMappingException e) {
-			
-			e.printStackTrace();
-			
-		}
-		catch (IOException e) {
-			
-			e.printStackTrace();
-			
-		}
-		catch (JSONException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return new ArrayList<Person>();
 	}
-	
-	public static void main(String[] args) {
-		DataProvider dp = new DataProvider();
-		
-	}
-	
 }

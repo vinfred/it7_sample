@@ -20,7 +20,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
 	TextView						personDate;
 	
 	public PeopleAdapter(Context context, ArrayList<Person> people) {
-		super(context, R.layout.list_item_layout, people);
+		super(context, R.layout.people_list_item, people);
 		this.context = context;
 		this.people = people;
 	}
@@ -28,7 +28,7 @@ public class PeopleAdapter extends ArrayAdapter<Person> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View rowView = inflater.inflate(R.layout.list_item_layout, parent, false);
+		View rowView = inflater.inflate(R.layout.people_list_item, parent, false);
 		
 		personName = (TextView) rowView.findViewById(R.id.person_name_text);
 		personName.setText(people.get(position).getName());

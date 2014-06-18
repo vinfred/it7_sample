@@ -83,6 +83,12 @@ public class NavigationDrawerFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		String[] titles = {
+				getString(R.string.people_section),
+				getString(R.string.title_section2),
+				getString(R.string.title_section3),
+		};
+		
 		mDrawerListView = (ListView) inflater.inflate(
 				R.layout.fragment_navigation_drawer, container, false);
 		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,11 +101,7 @@ public class NavigationDrawerFragment extends Fragment {
 				getActionBar().getThemedContext(),
 				android.R.layout.simple_list_item_1,
 				android.R.id.text1,
-				new String[] {
-						getString(R.string.title_section1),
-						getString(R.string.title_section2),
-						getString(R.string.title_section3),
-				}));
+				titles));
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
 	}

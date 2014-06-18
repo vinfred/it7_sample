@@ -7,7 +7,6 @@ public class Person {
 	String	name;
 	@JsonProperty("date of birth")
 	String	dateBirth;
-	
 	@JsonProperty("Biography")
 	String	bio;
 	

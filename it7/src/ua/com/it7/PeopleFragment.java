@@ -14,13 +14,15 @@ import ua.com.it7.helpers.DataProvider;
 import ua.com.it7.model.Person;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.widget.ListView;
+import android.widget.Toast;
 
 @EFragment(R.layout.fragment_main)
 public class PeopleFragment extends Fragment {
 	@ViewById(R.id.people_list)
-	ListView	peopleList;
+	ListView					peopleList;
+	
+	private ArrayList<Person>	s;
 	
 	@AfterViews
 	void chew() {
@@ -28,26 +30,27 @@ public class PeopleFragment extends Fragment {
 	}
 	
 	@UiThread
-	void showItems(ArrayList<Person> s) {
-		PeopleAdapter adapter = new PeopleAdapter(getActivity(), s);
-		peopleList.setAdapter(adapter);
+	void showItems() {
+		if (s != null) {
+			PeopleAdapter adapter = new PeopleAdapter(getActivity(), s);
+			peopleList.setAdapter(adapter);
+		}
+		else {
+			Toast.makeText(getActivity(), "No connection :'(", Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	@Background
 	void getData() {
 		DataProvider dp = new DataProvider();
-		showItems(dp.boo());
+		s = dp.boo();
+		showItems();
 	}
 	
 	@ItemClick(R.id.people_list)
-	void oi() {
-		FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-		
-		// MainActivity_.mNavigationDrawerFragment.mDrawerToggle.setDrawerIndicatorEnabled(false);
-		
-		/* fragmentManager.beginTransaction() .replace(R.id.container, new PeopleDetailFragment_()).addToBackStack(null) .commit(); */
+	void oi(Person p) {
 		Intent i = new Intent(getActivity(), PeopleDetailActivity_.class);
+		i.putExtra("person", p);
 		startActivity(i);
-		
 	}
 }

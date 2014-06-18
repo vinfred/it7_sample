@@ -40,11 +40,6 @@ public class DataProvider extends DefaultHttpClient {
 				s = EntityUtils.toString(getResponseEntity, HTTP.UTF_8);
 			}
 			
-			System.out.println(s);
-			// read from file, convert it to user class
-			// Person person = mapper.readValue(s, Person.class);
-			// return person;
-			
 			JSONObject people = new JSONObject(s);
 			Iterator<String> keys = people.keys();
 			ArrayList<Person> morePeople = new ArrayList<Person>();

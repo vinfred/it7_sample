@@ -1,14 +1,18 @@
 package ua.com.it7.model;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Person {
+public class Person implements Serializable {
+	private static final long	serialVersionUID	= -6984102554915369506L;
+	
 	@JsonProperty("Name")
-	String	name;
+	String						name;
 	@JsonProperty("date of birth")
-	String	dateBirth;
+	String						dateBirth;
 	@JsonProperty("Biography")
-	String	bio;
+	String						bio;
 	
 	public Person() {
 		super();

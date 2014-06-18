@@ -20,6 +20,7 @@ public class PeopleDetailFragment extends Fragment {
 		ActionBar a = ((ActionBarActivity) getActivity()).getSupportActionBar();
 		// a.setHomeAsUpIndicator(R.id.up);
 		a.setHomeButtonEnabled(true);
+		a.setDisplayHomeAsUpEnabled(true);
 		a.setNavigationMode(ActionBar.DISPLAY_HOME_AS_UP);
 		
 		return super.onCreateView(inflater, container, savedInstanceState);

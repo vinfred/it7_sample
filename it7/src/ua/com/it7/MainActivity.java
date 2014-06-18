@@ -1,6 +1,7 @@
 package ua.com.it7;
 
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +25,9 @@ public class MainActivity extends ActionBarActivity
 	 */
 	private CharSequence				mTitle;
 	
+	@Extra("fragment")
+	int									fragment;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,13 +38,21 @@ public class MainActivity extends ActionBarActivity
 		
 		// Set up the drawer.
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+		// FragmentManager fragmentManager = getSupportFragmentManager();
+		// gete
+		// fragmentManager.beginTransaction().replace(R.id.container, new PeopleFragment_()).commit();
 	}
 	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		fragmentManager.beginTransaction().replace(R.id.container, new PeopleFragment_()).commit();
+		if (position == -1) {
+			fragmentManager.beginTransaction().replace(R.id.container, new PeopleFragment_()).commit();
+		}
+		else {
+			fragmentManager.beginTransaction().replace(R.id.container, new PeopleFragment_()).commit();
+		}
 	}
 	
 	public void onSectionAttached(int number) {

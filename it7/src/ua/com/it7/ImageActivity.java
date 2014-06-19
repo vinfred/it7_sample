@@ -53,8 +53,11 @@ public class ImageActivity extends ActionBarActivity {
 	
 	public void usingSimpleImage(ImageView imageView) {
 		ImageAttacher mAttacher = new ImageAttacher(imageView);
-		ImageAttacher.MAX_ZOOM = 2.0f; // Double the current Size
-		ImageAttacher.MIN_ZOOM = 0.5f; // Half the current Size
+		// ImageAttacher.MAX_ZOOM = 3.0f; // Double the current Size
+		// ImageAttacher.MIN_ZOOM = 0.5f; // Half the current Size
+		ImageAttacher.MAX_ZOOM = imageView.getWidth();
+		ImageAttacher.MIN_ZOOM = 0.5f;
+		
 		MatrixChangeListener mMaListener = new MatrixChangeListener();
 		mAttacher.setOnMatrixChangeListener(mMaListener);
 		PhotoTapListener mPhotoTap = new PhotoTapListener();
@@ -79,6 +82,7 @@ public class ImageActivity extends ActionBarActivity {
 		ImageLoader mImageLoader = new ImageLoader(rQueue, cache);
 		picture.setImageUrl(imgs.get(0), mImageLoader);
 		usingSimpleImage(picture);
+		
 	}
 	
 	@Background

@@ -26,9 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name="ua.com.it7.PeopleDetailActivity_"
-            android:parentActivityName="ua.com.it7.MainActivity_" >
+            android:parentActivityName="ua.com.it7.MainActivity_" 
+            android:configChanges="orientation|screenSize" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ua.com.it7.MainActivity_" />

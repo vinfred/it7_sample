@@ -1,6 +1,7 @@
 package ua.com.it7;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -248,6 +249,8 @@ public class NavigationDrawerFragment extends Fragment {
 		
 		if (item.getItemId() == R.id.action_example) {
 			Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+			Intent i = new Intent(getActivity(), ImageActivity_.class);
+			startActivity(i);
 			return true;
 		}
 		

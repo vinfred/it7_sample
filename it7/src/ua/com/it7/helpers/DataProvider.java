@@ -13,24 +13,45 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 import ua.com.it7.model.Person;
+import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DataProvider extends DefaultHttpClient {
-	static final String	URL	= "http://it7.com.ua/test/people.json";
+	static final String	URL_PEOPLE	= "http://it7.com.ua/test/people.json";
+	static final String	URL_IMG		= "http://it7.com.ua/test/img.json";
 	
 	public DataProvider() {
 		super();
 	}
 	
-	@SuppressWarnings("unchecked")
-	public ArrayList<Person> boo() {
-		ObjectMapper mapper = new ObjectMapper();
+	public ArrayList<String> getImage() {
+		String s = readJson(URL_IMG);
+		Log.i("getimage", "oioi");
+		try {
+			JSONObject obj = new JSONObject(s);
+			Iterator<?> keys = obj.keys();
+			ArrayList<String> imgs = new ArrayList<>();
+			
+			while (keys.hasNext()) {
+				imgs.add(obj.getString((String) keys.next()));
+			}
+			Log.i("getimage", imgs.toString());
+			return imgs;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String readJson(String url) {
 		String s = null;
 		
+		HttpGet getRequest = new HttpGet(url);
+		HttpResponse getResponse;
 		try {
-			HttpGet getRequest = new HttpGet(URL);
-			HttpResponse getResponse = this.execute(getRequest);
+			getResponse = this.execute(getRequest);
 			final int statusCode = getResponse.getStatusLine().getStatusCode();
 			if (statusCode != HttpStatus.SC_OK) {
 				s = null;
@@ -39,13 +60,25 @@ public class DataProvider extends DefaultHttpClient {
 			if (getResponseEntity != null) {
 				s = EntityUtils.toString(getResponseEntity, HTTP.UTF_8);
 			}
-			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return s;
+	}
+	
+	public ArrayList<Person> boo() {
+		ObjectMapper mapper = new ObjectMapper();
+		String s = readJson(URL_PEOPLE);
+		
+		try {
 			JSONObject people = new JSONObject(s);
-			Iterator<String> keys = people.keys();
-			ArrayList<Person> morePeople = new ArrayList<Person>();
+			Iterator<?> keys = people.keys();
+			ArrayList<Person> morePeople = new ArrayList<>();
 			JSONObject p = null;
 			while (keys.hasNext()) {
-				p = people.getJSONObject(keys.next());
+				p = people.getJSONObject((String) keys.next());
 				morePeople.add(mapper.readValue(p.toString(), Person.class));
 			}
 			return morePeople;

@@ -8,6 +8,7 @@
 	<classpathentry kind="lib" path="libs/jackson-databind-2.4.0-javadoc.jar"/>
 	<classpathentry kind="lib" path="libs/jackson-databind-2.4.0.jar"/>
 	<classpathentry kind="lib" path="libs/androidannotations-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="libs/pinchzoom.jar"/>
 	<classpathentry kind="src" path=".apt_generated">
 		<attributes>
 			<attribute name="optional" value="true"/>

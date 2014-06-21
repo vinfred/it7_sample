@@ -1,4 +1,4 @@
-package ua.com.it7;
+package ua.com.it7.views;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,7 @@ import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
+import ua.com.it7.R;
 import ua.com.it7.adapters.PeopleAdapter;
 import ua.com.it7.helpers.DataProvider;
 import ua.com.it7.model.Person;
@@ -50,6 +51,7 @@ public class PeopleFragment extends Fragment {
 	@ItemClick(R.id.people_list)
 	void oi(Person p) {
 		Intent i = new Intent(getActivity(), PeopleDetailActivity_.class);
+		// Intent i = new Intent(getActivity(), DetailActivity_.class);
 		i.putExtra("person", p);
 		startActivity(i);
 	}

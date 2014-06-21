@@ -1,4 +1,4 @@
-package ua.com.it7;
+package ua.com.it7.views;
 
 import org.androidannotations.annotations.EFragment;
 

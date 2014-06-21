@@ -1,4 +1,4 @@
-package ua.com.it7;
+package ua.com.it7.views;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
+import ua.com.it7.R;
 import ua.com.it7.helpers.BitmapLruCache;
 import ua.com.it7.helpers.DataProvider;
 import android.graphics.RectF;

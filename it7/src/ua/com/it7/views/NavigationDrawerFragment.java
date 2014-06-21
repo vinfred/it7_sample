@@ -1,5 +1,6 @@
-package ua.com.it7;
+package ua.com.it7.views;
 
+import ua.com.it7.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -49,7 +50,7 @@ public class NavigationDrawerFragment extends Fragment {
 	private ListView					mDrawerListView;
 	private View						mFragmentContainerView;
 	
-	private int							mCurrentSelectedPosition	= -1;
+	private int							mCurrentSelectedPosition	= 0;
 	private boolean						mFromSavedInstanceState;
 	private boolean						mUserLearnedDrawer;
 	
@@ -86,8 +87,7 @@ public class NavigationDrawerFragment extends Fragment {
 			Bundle savedInstanceState) {
 		String[] titles = {
 				getString(R.string.people_section),
-				getString(R.string.title_section2),
-				getString(R.string.title_section3),
+				getString(R.string.image_section)
 		};
 		
 		mDrawerListView = (ListView) inflater.inflate(

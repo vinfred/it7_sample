@@ -1,10 +1,11 @@
-package ua.com.it7;
+package ua.com.it7.views;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
+import ua.com.it7.R;
 import ua.com.it7.model.Person;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;

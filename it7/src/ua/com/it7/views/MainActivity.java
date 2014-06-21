@@ -1,8 +1,9 @@
-package ua.com.it7;
+package ua.com.it7.views;
 
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 
+import ua.com.it7.R;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -47,11 +48,16 @@ public class MainActivity extends ActionBarActivity
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getSupportFragmentManager();
-		if (position == -1) {
-			fragmentManager.beginTransaction().replace(R.id.container, new PeopleFragment_()).commit();
-		}
-		else {
-			fragmentManager.beginTransaction().replace(R.id.container, new PeopleFragment_()).commit();
+		System.out.println(position);
+		switch (position) {
+			case 0:
+				fragmentManager.beginTransaction().replace(R.id.container, new PeopleFragment_()).commit();
+				break;
+			case 1:
+				fragmentManager.beginTransaction().replace(R.id.container, new ImageFragment_()).commit();
+				break;
+			default:
+				break;
 		}
 	}
 	
@@ -73,7 +79,7 @@ public class MainActivity extends ActionBarActivity
 			// Only show items in the action bar relevant to this screen
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.main, menu);
+			// getMenuInflater().inflate(R.menu.main, menu);
 			restoreActionBar();
 			return true;
 		}

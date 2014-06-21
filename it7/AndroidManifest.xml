@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ua.com.it7.MainActivity_"
+            android:name="ua.com.it7.views.MainActivity_"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
@@ -26,20 +26,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
-            android:name="ua.com.it7.PeopleDetailActivity_"
-            android:parentActivityName="ua.com.it7.MainActivity_" 
-            android:configChanges="orientation|screenSize" >
+            android:name="ua.com.it7.views.PeopleDetailActivity_"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName="ua.com.it7.views.MainActivity_" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ua.com.it7.MainActivity_" />
         </activity>
-        
         <activity
-            android:name="ua.com.it7.ImageActivity_"
+            android:name="ua.com.it7.views.ImageActivity_"
             android:label="@string/title_activity_image"
-            android:parentActivityName="ua.com.it7.MainActivity_" >
+            android:parentActivityName="ua.com.it7.views.MainActivity_" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ua.com.it7.MainActivity_" />
+        </activity>
+        <activity
+            android:name="ua.com.it7.views.DetailActivity_"
+            android:label="@string/title_activity_detail" 
+            android:parentActivityName="ua.com.it7.views.MainActivity_" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ua.com.it7.MainActivity_" />

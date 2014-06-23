@@ -1,17 +1,26 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ua.com.it7.views.ImageActivity$PlaceholderFragment" >
-
+    tools:context="ua.com.it7.views.ImageActivity"
+    tools:ignore="MergeRootFrame" 
+    android:background="@android:color/black">
+    
     <TextView
-        android:id="@+id/string"
+        android:id="@+id/text_warning_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-</RelativeLayout>
+        android:text="@string/no_internet_warning" 
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textStyle="italic"
+        android:textColor="@android:color/secondary_text_dark"
+        android:visibility="gone"/>
+   
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_gravity="center"/>
+</LinearLayout>

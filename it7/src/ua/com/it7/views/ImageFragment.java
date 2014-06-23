@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
@@ -13,11 +14,12 @@ import ua.com.it7.helpers.DataProvider;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
@@ -27,20 +29,24 @@ import com.imagezoom.ImageAttacher;
 import com.imagezoom.ImageAttacher.OnMatrixChangedListener;
 import com.imagezoom.ImageAttacher.OnPhotoTapListener;
 
-@EFragment(R.layout.activity_image)
+@EFragment(R.layout.fragment_image)
+@OptionsMenu(R.menu.detail)
 public class ImageFragment extends Fragment {
 	private ArrayList<String>	imgs;
 	
 	@ViewById(R.id.picture)
 	NetworkImageView			picture;
-	
+	@ViewById(R.id.text_warning_image)
+	TextView					warning;
 	public RequestQueue			rQueue;
 	public BitmapLruCache		cache;
+	private ImageLoader			mImageLoader;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		rQueue = Volley.newRequestQueue(getActivity());
 		cache = new BitmapLruCache();
+		mImageLoader = new ImageLoader(rQueue, cache);
 		getData();
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
@@ -72,17 +78,34 @@ public class ImageFragment extends Fragment {
 	
 	@UiThread
 	void show() {
-		ImageLoader mImageLoader = new ImageLoader(rQueue, cache);
-		picture.setImageUrl(imgs.get(0), mImageLoader);
-		usingSimpleImage(picture);
-		
+		if (imgs != null) {
+			picture.setVisibility(View.VISIBLE);
+			warning.setVisibility(TextView.GONE);
+			picture.setImageUrl(imgs.get(0), mImageLoader);
+			usingSimpleImage(picture);
+		}
+		else {
+			picture.setVisibility(View.GONE);
+			warning.setVisibility(TextView.VISIBLE);
+		}
 	}
 	
 	@Background
 	void getData() {
 		DataProvider dp = new DataProvider();
 		imgs = dp.getImage();
-		Log.i("activity", imgs.toString());
 		show();
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.action_refresh:
+				getData();
+				break;
+			default:
+				break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

@@ -32,7 +32,7 @@
             android:parentActivityName="ua.com.it7.views.MainActivity_" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ua.com.it7.MainActivity_" />
+                android:value="ua.com.it7.views.MainActivity_" />
         </activity>
         <activity
             android:name="ua.com.it7.views.ImageActivity_"
@@ -40,7 +40,7 @@
             android:parentActivityName="ua.com.it7.views.MainActivity_" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ua.com.it7.MainActivity_" />
+                android:value="ua.com.it7.views.MainActivity_" />
         </activity>
         <activity
             android:name="ua.com.it7.views.DetailActivity_"
@@ -48,7 +48,7 @@
             android:parentActivityName="ua.com.it7.views.MainActivity_" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ua.com.it7.MainActivity_" />
+                android:value="ua.com.it7.views.MainActivity_" />
         </activity>
     </application>
 

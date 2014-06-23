@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DataProvider extends DefaultHttpClient {
 	static final String	URL_PEOPLE	= "http://it7.com.ua/test/people.json";
+	// static final String URL_PEOPLE = "http://pravda.com.ua/";
 	static final String	URL_IMG		= "http://it7.com.ua/test/img.json";
 	
 	public DataProvider() {
@@ -87,6 +88,6 @@ public class DataProvider extends DefaultHttpClient {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<Person>();
+		return null;
 	}
 }

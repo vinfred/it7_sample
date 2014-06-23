@@ -9,11 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ua.com.it7.views.MainActivity$PeopleFragment_" >
 
+    <TextView
+        android:id="@+id/text_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_internet_warning" 
+        android:layout_gravity="center_horizontal"
+        android:textStyle="italic"
+        android:textColor="@android:color/secondary_text_light"
+        android:visibility="gone"/>
+
     <ListView
         android:id="@+id/people_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    </ListView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

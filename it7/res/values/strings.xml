@@ -8,8 +8,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
     <string name="title_activity_image">Picture</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="no_internet_warning">Something gone wrong. Check the Internet connection!</string>
 
 </resources>

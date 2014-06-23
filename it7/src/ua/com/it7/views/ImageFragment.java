@@ -39,9 +39,9 @@ public class ImageFragment extends Fragment {
 	
 	public void usingSimpleImage(ImageView imageView) {
 		ImageAttacher mAttacher = new ImageAttacher(imageView);
-		// ImageAttacher.MAX_ZOOM = 3.0f; // Double the current Size
+		ImageAttacher.MAX_ZOOM = 3.0f; // Double the current Size
 		// ImageAttacher.MIN_ZOOM = 0.5f; // Half the current Size
-		ImageAttacher.MAX_ZOOM = imageView.getWidth();
+		// ImageAttacher.MAX_ZOOM = imageView.getWidth();
 		ImageAttacher.MIN_ZOOM = 0.5f;
 		
 		MatrixChangeListener mMaListener = new MatrixChangeListener();

@@ -27,18 +27,6 @@ import android.widget.TextView;
 @EFragment(R.layout.fragment_main)
 @OptionsMenu(R.menu.detail)
 public class PeopleFragment extends Fragment {
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.action_refresh:
-				getData();
-				break;
-			default:
-				break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
 	@ViewById(R.id.people_list)
 	ListView					peopleList;
 	Activity					parent;
@@ -58,6 +46,18 @@ public class PeopleFragment extends Fragment {
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		parent = activity;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.action_refresh:
+				getData();
+				break;
+			default:
+				break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 	
 	@UiThread

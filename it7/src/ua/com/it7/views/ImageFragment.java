@@ -37,12 +37,19 @@ public class ImageFragment extends Fragment {
 	public RequestQueue			rQueue;
 	public BitmapLruCache		cache;
 	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		rQueue = Volley.newRequestQueue(getActivity());
+		cache = new BitmapLruCache();
+		getData();
+		return super.onCreateView(inflater, container, savedInstanceState);
+	}
+	
 	public void usingSimpleImage(ImageView imageView) {
 		ImageAttacher mAttacher = new ImageAttacher(imageView);
 		ImageAttacher.MAX_ZOOM = 3.0f; // Double the current Size
-		// ImageAttacher.MIN_ZOOM = 0.5f; // Half the current Size
+		ImageAttacher.MIN_ZOOM = 0.5f; // Half the current Size
 		// ImageAttacher.MAX_ZOOM = imageView.getWidth();
-		ImageAttacher.MIN_ZOOM = 0.5f;
 		
 		MatrixChangeListener mMaListener = new MatrixChangeListener();
 		mAttacher.setOnMatrixChangeListener(mMaListener);
@@ -77,13 +84,5 @@ public class ImageFragment extends Fragment {
 		imgs = dp.getImage();
 		Log.i("activity", imgs.toString());
 		show();
-	}
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rQueue = Volley.newRequestQueue(getActivity());
-		cache = new BitmapLruCache();
-		getData();
-		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 }

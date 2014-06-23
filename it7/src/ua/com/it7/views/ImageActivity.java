@@ -13,9 +13,6 @@ import ua.com.it7.helpers.DataProvider;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -30,18 +27,10 @@ import com.imagezoom.ImageAttacher.OnPhotoTapListener;
 @EActivity(R.layout.activity_image)
 public class ImageActivity extends ActionBarActivity {
 	private ArrayList<String>	imgs;
-	
 	@ViewById(R.id.picture)
 	NetworkImageView			picture;
-	
 	public RequestQueue			rQueue;
 	public BitmapLruCache		cache;
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.image, menu);
-		return true;
-	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,24 +72,12 @@ public class ImageActivity extends ActionBarActivity {
 		ImageLoader mImageLoader = new ImageLoader(rQueue, cache);
 		picture.setImageUrl(imgs.get(0), mImageLoader);
 		usingSimpleImage(picture);
-		
 	}
 	
 	@Background
 	void getData() {
 		DataProvider dp = new DataProvider();
 		imgs = dp.getImage();
-		Log.i("activity", imgs.toString());
 		show();
 	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
 }
